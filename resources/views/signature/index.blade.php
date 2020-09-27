@@ -21,7 +21,7 @@
        <div class="col-md-6 offset-md-3 mt-5">
            <div class="card">
                <div class="card-header">
-                   <h5>Laravel Signature Pad Example - codechief.org </h5>
+                   <h5>Laravel Signature Pad Example </h5>
                </div>
                <div class="card-body">
                     @if ($message = Session::get('success'))
