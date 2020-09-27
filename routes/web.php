@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SignatureController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// Signature Pad
 Route::get('/signature',[SignatureController::class,'index']);
 Route::post('/signature',[SignatureController::class,'upload'])->name('signature');
+
+// generate PDF
+Route::get('/pdf', [PDFController::class,'index']);
+Route::get('/pdf/report', [PDFController::class,'daily_report'])->name('report');
