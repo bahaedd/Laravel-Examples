@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SignatureController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,7 @@ Route::post('/signature',[SignatureController::class,'upload'])->name('signature
 // generate PDF
 Route::get('/pdf', [PDFController::class,'index']);
 Route::get('/pdf/report', [PDFController::class,'daily_report'])->name('report');
+
+//Ajax Dynamic Dependent Dropdown
+Route::get('/category', [CategoryController::class,'index']);
+Route::post('/category', [CategoryController::class,'subcat'])->name('subcat');
