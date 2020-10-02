@@ -36,3 +36,15 @@ Route::post('/category', [CategoryController::class,'subcat'])->name('subcat');
 //Search Multiple Models using Spatie Searchable Package
 Route::get('/search', [SeachController::class, 'index']);
 Route::get('/search/results', [SeachController::class, 'search'])->name('search');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Client Side Form Validation with jQuery
+Route::get('/validation', function () {
+    return view('validation.index');
+});
+
+Route::post('/validation', [App\Http\Controllers\HomeController::class, 'validation'])->name('validate');
