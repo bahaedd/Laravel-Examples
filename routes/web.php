@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SignatureController;
+use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeachController;
 
@@ -48,3 +49,7 @@ Route::get('/validation', function () {
 });
 
 Route::post('/validation', [App\Http\Controllers\HomeController::class, 'validation'])->name('validate');
+
+//Form Validation Using Vue Js
+Route::get('vuejs/form', [VueController::class,'index']);
+Route::post('vuejs/form', [VueController::class,'store']);
