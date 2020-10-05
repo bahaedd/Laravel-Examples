@@ -6,6 +6,7 @@ use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeachController;
+use App\Http\Controllers\ImageUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,8 @@ Route::post('/validation', [App\Http\Controllers\HomeController::class, 'validat
 //Form Validation Using Vue Js
 Route::get('vuejs/form', [VueController::class,'index']);
 Route::post('vuejs/form', [VueController::class,'store']);
+
+//Dropzone
+Route::get('dropzone/upload',[ImageUploadController::class, 'index']);
+Route::post('dropzone/upload/store',[ImageUploadController::class, 'store']);
+Route::post('dropzone/delete',[ImageUploadController::class, 'destroy']);
