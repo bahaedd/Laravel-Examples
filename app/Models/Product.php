@@ -24,4 +24,13 @@ class Product extends Model implements Searchable
         );
     }
 
+    public function price()
+    {
+        return $this->hasOne(Price::class);
+    }
+
+    public function color()
+    {
+        return $this->hasOne(Color::class);
+    }
 }

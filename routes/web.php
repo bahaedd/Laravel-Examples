@@ -7,6 +7,8 @@ use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeachController;
 use App\Http\Controllers\ImageUploadController;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +61,24 @@ Route::post('vuejs/form', [VueController::class,'store']);
 Route::get('dropzone/upload',[ImageUploadController::class, 'index']);
 Route::post('dropzone/upload/store',[ImageUploadController::class, 'store']);
 Route::post('dropzone/delete',[ImageUploadController::class, 'destroy']);
+
+//Advanced Search Filter using Dropdown
+Route::get('/products', function (Request $request) {
+
+    $products = Product::where( function($query) use($request){
+                     return $request->price_id ?
+                            $query->from('prices')->where('id',$request->price_id) : '';
+                })->where(function($query) use($request){
+                     return $request->color_id ?
+                            $query->from('colors')->where('id',$request->color_id) : '';
+                })
+                ->with('price','color')
+                ->get();
+
+    $selected_id = [];
+    $selected_id['price_id'] = $request->price_id;
+    $selected_id['color_id'] = $request->color_id;
+
+    return view('products.index',compact('products','selected_id'));
+
+})->name('filter');
