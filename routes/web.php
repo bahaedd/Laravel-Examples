@@ -7,6 +7,7 @@ use App\Http\Controllers\VueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeachController;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\PostController;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -82,3 +83,7 @@ Route::get('/products', function (Request $request) {
     return view('products.index',compact('products','selected_id'));
 
 })->name('filter');
+
+// Laravel Query Scopes
+Route::get('/posts',[PostController::class, 'index']);
+
