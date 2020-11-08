@@ -87,3 +87,9 @@ Route::get('/products', function (Request $request) {
 // Laravel Query Scopes
 Route::get('/posts',[PostController::class, 'index']);
 
+//qr code generator
+Route::get('qr' , function(){
+    \QrCode::size(500)->format('png')->generate('larocco.ma', public_path('images/qr.png'));
+
+    return view('signature.qrcode');
+});

@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "niklasravnsborg/laravel-pdf": "^4.0",
+        "simplesoftwareio/simple-qrcode": "^4.1",
         "spatie/laravel-searchable": "^1.7"
     },
     "require-dev": {
